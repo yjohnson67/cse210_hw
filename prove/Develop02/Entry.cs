@@ -1,8 +1,8 @@
-class entry
+class Entry
 {
     string date, prompt, response;
 
-    public entry(string _date, string _prompt, string _response)
+    public Entry(string _date, string _prompt, string _response)
     {
         date = _date;
         prompt = _prompt;
