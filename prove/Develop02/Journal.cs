@@ -6,7 +6,7 @@ class Journal
 {
     public List<Entry> entries;
     PromptGenerator promptGenerator;
-    
+
     public Journal()
     {
         entries = new List<Entry>();
@@ -59,27 +59,49 @@ class Journal
         }
         Console.WriteLine("Journal saved to file.");
     }
-
+    
     public void Load()
-     {
+    {
         Console.WriteLine("Enter the filename to load:");
         string filename = Console.ReadLine();
 
-        using (StreamReader reader = new StreamReader(filename))
+        if (!File.Exists(filename))
         {
-            string line;
-            while ((line = reader.ReadLine()) != null)
-            {
-                string[] parts = line.Split(',');
-                string date = parts[0];
-                string prompt = parts[1];
-                string response = parts[2];
-
-                Entry entry = new Entry(date, prompt, response);
-                entries.Add(entry);
-            }
+            Console.WriteLine("Error: File {0} does not exist.", filename);
+            return;
         }
 
-        Console.WriteLine("Journal loaded from {0}.", filename);
+        try
+        {
+            using (StreamReader reader = new StreamReader(filename))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] parts = line.Split('|');
+                    if (parts.Length != 3)
+                    {
+                        Console.WriteLine("Error: Line '{0}' does not contain 3 comma-separated parts and cannot be loaded as an entry.", line);
+                        continue;
+                    }
+                    string date = parts[0];
+                    string prompt = parts[1];
+                    string response = parts[2];
+
+                    Entry entry = new Entry(date, prompt, response);
+                    entries.Add(entry);
+
+                    // Display the entry that was just added
+                    Console.WriteLine("Entry loaded from file:");
+                    entry.DisplayEntry();
+                }
+            }
+
+            Console.WriteLine("Journal loaded from {0}.", filename);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error loading journal from {0}: {1}", filename, ex.Message);
+        }
     }
 }

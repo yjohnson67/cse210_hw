@@ -1,0 +1,4 @@
+04/26/2023|What did you learn today?|How to call a file in from the load function.
+04/26/2023|What did you learn today?|Learning how to read C#.
+04/26/2023|What did you learn today?|Apparently nothing how to load a code.
+04/26/2023|What are your goals for the upcoming week?|To learn C# better.
