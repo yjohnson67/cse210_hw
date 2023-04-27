@@ -24,7 +24,10 @@ class Journal
         Console.WriteLine("Enter the date of this entry (MM/DD/YYYY):");
         string date = Console.ReadLine();
 
-        Entry entry = new Entry(date, prompt, response);
+        Console.WriteLine("Enter the mood for this entry:");
+        string mood = Console.ReadLine();
+
+        Entry entry = new Entry(date, prompt, response, mood);
         entries.Add(entry);
         Console.WriteLine("Entry added to journal.");
     }
@@ -59,7 +62,7 @@ class Journal
         }
         Console.WriteLine("Journal saved to file.");
     }
-    
+
     public void Load()
     {
         Console.WriteLine("Enter the filename to load:");
@@ -79,16 +82,17 @@ class Journal
                 while ((line = reader.ReadLine()) != null)
                 {
                     string[] parts = line.Split('|');
-                    if (parts.Length != 3)
+                    if (parts.Length != 4)
                     {
-                        Console.WriteLine("Error: Line '{0}' does not contain 3 comma-separated parts and cannot be loaded as an entry.", line);
+                        Console.WriteLine("Error: Line '{0}' does not contain 4 pipe-separated parts and cannot be loaded as an entry.", line);
                         continue;
                     }
                     string date = parts[0];
                     string prompt = parts[1];
                     string response = parts[2];
+                    string mood = parts[3];
 
-                    Entry entry = new Entry(date, prompt, response);
+                    Entry entry = new Entry(date, prompt, response, mood);
                     entries.Add(entry);
 
                     // Display the entry that was just added
