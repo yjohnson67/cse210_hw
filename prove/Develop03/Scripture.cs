@@ -42,4 +42,8 @@ class Scripture {
     public bool IsAllWordsHidden() {
         return hiddenWords.Count == text.Split().Length; // check if all words in the scripture are hidden
     }
+    public void ResetHiddenWords() {
+    this.hiddenWords.Clear(); // clear the list of hidden words
+    this.NumOfHiddenWords = 0; // reset the number of hidden words
+}
 }

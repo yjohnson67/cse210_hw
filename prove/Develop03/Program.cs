@@ -1,57 +1,55 @@
 using System;
 using System.Collections.Generic;
 
-class Program {
-    static void Main(string[] args) {
-        // create a list of Scripture objects
-        List<Scripture> scriptures = new List<Scripture>();
+class Program
+{
+    // Define the main method
+    static void Main(string[] args)
+    {
 
-        // add three Scripture objects to the list
+        // Create a list of scripture objects
+        List<Scripture> scriptures = new List<Scripture>();
         scriptures.Add(new Scripture("John", 3, 16, "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life."));
         scriptures.Add(new Scripture("Proverbs", 3, 5, 6, "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight."));
         scriptures.Add(new Scripture("Psalm", 23, 1, "The Lord is my shepherd, I lack nothing."));
 
-        //create a new Random object
+        // Create a new instance of the random class
         Random rand = new Random();
 
-        // iterate through each Scripture in the list   
-        foreach (Scripture scripture in scriptures)
+        // Create an infinite loop that presents random scriptures to the user
+        while (true)
         {
-            // clear the console window
             Console.Clear();
+            // Select a random scripture from the list
+            Scripture randomScripture = scriptures[rand.Next(0, scriptures.Count)];
 
-            // display the reference and text of the Scripture
-            Console.WriteLine(scripture.GetReference());
-            Console.WriteLine(scripture.GetText());
-
-            // prompt the user to enter a command
+            // Display the scripture reference and text
+            Console.WriteLine(randomScripture.GetReference());
+            Console.WriteLine(randomScripture.GetText());
             Console.WriteLine("Press Enter to hide a word, or type 'quit' to exit.");
             string input = Console.ReadLine();
 
-            // split the text of the Scripture into an array of words
-            string[] words = scripture.GetText().Split(' ');
+            // Split the text of the scripture into an array of words
+            string[] words = randomScripture.GetText().Split(' ');
 
-             // loop until the user enters 'quit' or all words are hidden
-            while (input.ToLower() != "quit" && !scripture.IsAllWordsHidden())
+            // Create a loop that allows the user to hide words
+            while (input.ToLower() != "quit" && !randomScripture.IsAllWordsHidden())
             {
-                // generate a random index for a word in the Scripture
+                // Choose a random word to hide
                 int wordIndex = rand.Next(0, words.Length);
-
-                 // if the word at the index has not already been hidden
-                if (!scripture.hiddenWords.Contains(wordIndex))
+                
+                // If the word is not already hidden, add it to the list of hidden words
+                if (!randomScripture.hiddenWords.Contains(wordIndex))
                 {
-                     // add the index to the list of hidden words
-                    scripture.hiddenWords.Add(wordIndex);
+                    randomScripture.hiddenWords.Add(wordIndex);
                 }
 
-                // clear the console window
                 Console.Clear();
-
-                // display the reference and text of the Scripture, with hidden words replaced by asterisks
-                Console.WriteLine(scripture.GetReference());
+                Console.WriteLine(randomScripture.GetReference());
+                // Loop through the words in the scripture, displaying each one with either its text or asterisks
                 for (int i = 0; i < words.Length; i++)
                 {
-                    if (scripture.hiddenWords.Contains(i))
+                    if (randomScripture.hiddenWords.Contains(i))
                     {
                         Console.Write(new string('*', words[i].Length));
                     }
@@ -61,12 +59,13 @@ class Program {
                     }
                     Console.Write(' ');
                 }
-
-                 // prompt the user to enter another command
                 Console.WriteLine();
                 Console.WriteLine("Press Enter to hide another word, or type 'quit' to exit.");
                 input = Console.ReadLine();
             }
+
+            // Reset the hidden words for the next scripture
+            randomScripture.ResetHiddenWords();
         }
     }
 }
