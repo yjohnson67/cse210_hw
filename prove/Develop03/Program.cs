@@ -51,7 +51,7 @@ class Program
                 {
                     if (randomScripture.hiddenWords.Contains(i))
                     {
-                        Console.Write(new string('*', words[i].Length));
+                        Console.Write(new string('_', words[i].Length));
                     }
                     else
                     {
