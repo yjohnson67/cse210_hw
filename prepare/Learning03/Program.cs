@@ -1,7 +1,7 @@
 using System;
-class Program
+using Learning04.Assignments;
 {
-    static void Main(string[] args)
+        static void Main(string[] args)
     {
         Fraction fraction1 = new Fraction();
         Fraction fraction2 = new Fraction(5);
