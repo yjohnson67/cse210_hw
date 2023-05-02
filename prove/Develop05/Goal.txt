@@ -1,0 +1,3 @@
+Developer5.SimpleGoal|Eat Lunch|Nutrition|100|True
+Developer5.SimpleGoal|Temple|Attend 1 per week|500|False
+Developer5.SimpleGoal|Daily Exercise|10|30|False
