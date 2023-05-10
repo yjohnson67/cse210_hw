@@ -12,15 +12,17 @@ namespace Developer5
         {
         }
 
+        // RecordEvent method for EternalGoal
         public override int RecordEvent()
         {
             // Add display message
             return Points;
         }
 
+        // SaveData method for EternalGoal
         public override string SaveData()
         {
-            return $"{GetType()}|{Name}|{Description}|{Points}";
+            return $"EternalGoal|{Name}|{Description}|{Points}|False";
         }
     }
 }

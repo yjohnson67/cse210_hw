@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Developer5
 {
@@ -13,8 +12,6 @@ namespace Developer5
 
         public void Run()
         {
-
-
             while (true)
             {
                 Console.WriteLine("Choose an option:");
@@ -34,30 +31,57 @@ namespace Developer5
                         Console.WriteLine("1. Simple goal");
                         Console.WriteLine("2. Eternal goal");
                         Console.WriteLine("3. Checklist goal");
+                        Console.WriteLine("4. Progress goal");
+                        Console.WriteLine("5. Negative goal");
                         string goalChoice = Console.ReadLine();
 
                         Goal newGoal;
                         switch (goalChoice)
                         {
                             case "1":
+                                // Create a new instance of SimpleGoal
                                 newGoal = new SimpleGoal(" ", " ", 0);
                                 newGoal.GetGoalInfo();
                                 goals.Add(newGoal);
                                 break;
 
                             case "2":
+                                // Create a new instance of EternalGoal
                                 newGoal = new EternalGoal(" ", " ", 0);
                                 newGoal.GetGoalInfo();
                                 goals.Add(newGoal);
                                 break;
 
                             case "3":
+                                // Create a new instance of ChecklistGoal
                                 newGoal = new ChecklistGoal(" ", " ", 0, 0, 0);
                                 newGoal.GetGoalInfo();
                                 Console.WriteLine("What is the target amount?");
                                 int target = int.Parse(Console.ReadLine());
                                 Console.WriteLine("What is the bonus amount?");
                                 int bonus = int.Parse(Console.ReadLine());
+
+                                goals.Add(newGoal);
+                                break;
+
+                            case "4":
+                                // Create a new instance of ProgressGoal
+                                newGoal = new ProgressGoal(" ", " ", 0, false, 0, 0);
+                                newGoal.GetGoalInfo();
+                                Console.WriteLine("What is the target amount?");
+                                target = int.Parse(Console.ReadLine());
+                                Console.WriteLine("What is the current progress?");
+                                int progress = int.Parse(Console.ReadLine());
+
+                                goals.Add(newGoal);
+                                break;
+
+                            case "5":
+                                // Create a new instance of NegativeGoal
+                                newGoal = new NegativeGoal(" ", " ", 0, false, 0);
+                                newGoal.GetGoalInfo();
+                                Console.WriteLine("What is the penalty amount?");
+                                int penalty = int.Parse(Console.ReadLine());
 
                                 goals.Add(newGoal);
                                 break;
@@ -81,22 +105,22 @@ namespace Developer5
                     case "3":
                         fileHandling.SaveGoals(goals);
                         break;
+
                     case "4":
                         goals = fileHandling.LoadGoalsFromFile();
                         break;
+
                     case "5":
                         Console.WriteLine("Which goal would you like to record an event for?");
                         counter = 1;
                         foreach (Goal goal in goals)
                         {
-                            
-                                Console.WriteLine($"{counter}. {goal.DisplayGoal()}");
+                            Console.WriteLine($"{counter}. {goal.DisplayGoal()}");
                             counter++;
                         }
-
                         int goalIndex = int.Parse(Console.ReadLine()) - 1;
                         totalPoints = goals[goalIndex].RecordEvent();
-                        Console.WriteLine($"Congratulations you have {totalPoints}!");
+                        Console.WriteLine($"Congratulations! You have earned {totalPoints} points!");
                         break;
 
                     case "6":

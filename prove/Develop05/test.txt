@@ -1,0 +1,5 @@
+SimpleGoal|Eat Lunch|Get all the calories in.|7000|True
+EternalGoal|Temple|Attend 4x per month|4000|False
+ChecklistGoal|Bathroom|Clean bathroom 2x per week|2000|False|0|0|0
+ProgressGoal|Marathon|run 2 miles every day|12000|False|0|0
+NegativeGoal|Sugar|Avoid processed food with sugar.|7000|False|0

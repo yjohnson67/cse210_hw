@@ -1,37 +1,41 @@
 using System;
-using System.Collections.Generic;
 
 namespace Developer5
 {
     public abstract class Goal
     {
-        // FIELDS (ATTRIBUTES/VARIABLES)
         private string name;
         private string description;
         private int points;
         private bool isCompleted;
-        // PROPERTIES
+
+        //Private fields
+
         public string Name
         {
             get { return name; }
             protected set { name = value; }
         }
+
         public string Description
         {
             get { return description; }
             protected set { description = value; }
         }
+
         public int Points
         {
             get { return points; }
             protected set { points = value; }
         }
+
         public bool IsCompleted
         {
             get { return isCompleted; }
             protected set { isCompleted = value; }
         }
 
+        // GetGoalInfo method
         public void GetGoalInfo()
         {
             Console.WriteLine("What is the name of your goal?");
@@ -41,6 +45,9 @@ namespace Developer5
             Console.WriteLine("What is the amount of points this goal is worth?");
             points = int.Parse(Console.ReadLine());
         }
+
+        //constructors
+
         public Goal(string name, string description, int points)
         {
             this.name = name;
@@ -57,28 +64,31 @@ namespace Developer5
             this.isCompleted = isCompleted;
         }
 
+        //GetIsCompleted method
+
         public char GetIsCompleted()
         {
-            if (IsCompleted)
-                return 'X';
-            else
-                return ' ';
+            return isCompleted ? 'X' : ' ';
         }
+
+        //DisplayGoal method
 
         public virtual string DisplayGoal()
         {
             return $"[{GetIsCompleted()}] {name} ({description})";
         }
 
+        // DisplayCompletedGoal method
+
         public virtual string DisplayCompletedGoal()
         {
             return $"{name} ({description})";
         }
 
+        // Abstract methods
+
         public abstract string SaveData();
 
         public abstract int RecordEvent();
-
-
     }
 }

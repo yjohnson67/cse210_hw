@@ -41,7 +41,7 @@ namespace Developer5
 
         public override string SaveData()
         {
-            return $"{GetType()}|{Name}|{Description}|{Points}|{IsCompleted}|{target}|{bonus}|{total}";
+            return $"ChecklistGoal|{Name}|{Description}|{Points}|{IsCompleted}|{target}|{bonus}|{total}";
         }
     }
 }

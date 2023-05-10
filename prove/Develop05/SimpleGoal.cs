@@ -13,6 +13,10 @@ namespace Developer5
 
         }
 
+        // public override int RecordEvent()
+
+        // This comment indicates that the following code block overrides the RecordEvent method from the base class.
+
         public override int RecordEvent()
         {
             IsCompleted = true;
@@ -21,9 +25,13 @@ namespace Developer5
 
         }
 
+        // public override string SaveData()
+
+        // This comment indicates that the following code block overrides the SaveData method from the base class.
+
         public override string SaveData()
         {
-            return $"{GetType()}|{Name}|{Description}|{Points}|{IsCompleted}";
+            return $"SimpleGoal|{Name}|{Description}|{Points}|{IsCompleted}";
         }
     }
 }
