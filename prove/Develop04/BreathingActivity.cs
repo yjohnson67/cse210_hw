@@ -12,22 +12,22 @@ public class BreathingActivity : Activity
         Start();
         Console.WriteLine("This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.\n");
 
-        Console.WriteLine("Breathe in for 2 breaths...");
+        Console.WriteLine("Breathe in for 4 coounts ...");
         CountdownAndShowProgress(4);
 
-        Console.WriteLine("Breathe out for 4 breaths...");
+        Console.WriteLine("Breathe out for 6 counts...");
         CountdownAndShowProgress(6);
 
-        Console.WriteLine("Breathe in for 4 breaths...");
+        Console.WriteLine("Breathe in for 6 counts...");
         CountdownAndShowProgress(6);
 
-        Console.WriteLine("Breathe out for 6 breaths...");
+        Console.WriteLine("Breathe out for 8 counts..");
         CountdownAndShowProgress(8);
 
-        Console.WriteLine("Breathe in for 6 breaths...");
+        Console.WriteLine("Breathe in for 8 counts...");
         CountdownAndShowProgress(8);
 
-        Console.WriteLine("Breathe out for 8 breaths...");
+        Console.WriteLine("Breathe out for 10 counts...");
         CountdownAndShowProgress(10);
 
         Console.WriteLine("\nWell done!");
@@ -75,18 +75,21 @@ public class BreathingActivity : Activity
     }
 
     // Display a countdown with progress numbers
+    // Display a countdown with progress using *
+    // Display a countdown with progress using *
+    // Display a countdown with progress using *
     protected void CountdownAndShowProgress(int breaths)
     {
-        int countdownBreaths = breaths;
         int millisecondsPerBreath = 1000;
-        int frames = countdownBreaths * 1000 / millisecondsPerBreath;
 
-        for (int i = countdownBreaths; i > 0; i--)
+        for (int i = breaths; i > 0; i--)
         {
-            Console.Write($"{i}... ");
+            Console.Write('*');
             Thread.Sleep(millisecondsPerBreath);
+            Console.Write("... ");
         }
 
         Console.WriteLine();
     }
+
 }
