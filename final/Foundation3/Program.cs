@@ -1,15 +1,15 @@
 using System;
+
 public class Program
 {
     public static void Main(string[] args)
     {
         // Create instances of each event type
         Address lectureAddress = new Address("123 Main St", "New York", "NY", "10001");
-        Lecture lecture = new Lecture("Tech Talk", "Learn about the latest technologies", new DateTime(2023, 5, 20), new TimeSpan(14, 0, 0), lectureAddress, "John Doe", 100);
+        LectureEvent lecture = new LectureEvent("Tech Talk", "Learn about the latest technologies", new DateTime(2023, 5, 20), new TimeSpan(14, 0, 0), lectureAddress, "John Doe", 100);
 
         Address receptionAddress = new Address("456 Park Ave", "San Francisco", "CA", "94101");
-        Reception reception =
-        Reception("Networking Event", "Join us for a networking event", new DateTime(2023, 5, 25), new TimeSpan(18, 30, 0), receptionAddress, "rsvp@example.com");
+        Reception reception = new Reception("Networking Event", "Join us for a networking event", new DateTime(2023, 5, 25), new TimeSpan(18, 30, 0), receptionAddress, "rsvp@example.com");
 
         Address gatheringAddress = new Address("789 Beach Rd", "Miami", "FL", "33101");
         OutdoorGathering gathering = new OutdoorGathering("Beach Party", "Celebrate summer with a beach party", new DateTime(2023, 6, 1), new TimeSpan(12, 0, 0), gatheringAddress, "Sunny with a slight breeze");

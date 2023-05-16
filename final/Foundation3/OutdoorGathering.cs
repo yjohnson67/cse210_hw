@@ -1,18 +1,17 @@
-// Derived class for lectures
-public class Lecture : Event
+using System;
+// Derived class for outdoor gatherings
+public class OutdoorGathering : Event
 {
-    private string speaker;
-    private int capacity;
+    private string weatherStatement;
 
-    public Lecture(string title, string description, DateTime date, TimeSpan time, Address address, string speaker, int capacity)
+    public OutdoorGathering(string title, string description, DateTime date, TimeSpan time, Address address, string weatherStatement)
         : base(title, description, date, time, address)
     {
-        this.speaker = speaker;
-        this.capacity = capacity;
+        this.weatherStatement = weatherStatement;
     }
 
     public override string GetFullDetails()
     {
-        return $"{base.GetFullDetails()}\nType: Lecture\nSpeaker: {speaker}\nCapacity: {capacity}";
+        return $"{base.GetFullDetails()}\nType: Outdoor Gathering\nWeather: {weatherStatement}";
     }
 }
