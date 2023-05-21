@@ -23,12 +23,14 @@ public class Program
         Console.WriteLine(lecture.GetShortDescription());
         Console.WriteLine();
 
+        // Marketing messages for Reception event
         Console.WriteLine("Reception:");
         Console.WriteLine(reception.GetStandardDetails());
         Console.WriteLine(reception.GetFullDetails());
         Console.WriteLine(reception.GetShortDescription());
         Console.WriteLine();
 
+        // Marketing messages for Outdoor Gathering event
         Console.WriteLine("Outdoor Gathering:");
         Console.WriteLine(gathering.GetStandardDetails());
         Console.WriteLine(gathering.GetFullDetails());

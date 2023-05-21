@@ -4,8 +4,8 @@ using System.Collections.Generic;
 // Video class inheriting from Media
 class Video : Media
 {
-    public int Length { get; set; }
-    private List<Comment> comments;
+    public int Length { get; set; }// Public property to store the length of the video
+    private List<Comment> comments;// Private field to store the comments on the video
 
     public Video()
     {
@@ -14,11 +14,13 @@ class Video : Media
 
     public void AddComment(Comment comment)
     {
+        // Add a comment to the video
         comments.Add(comment);
     }
 
     public int GetCommentCount()
     {
+        // Return the number of comments on the video
         return comments.Count;
     }
 
