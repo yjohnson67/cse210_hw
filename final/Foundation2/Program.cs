@@ -29,7 +29,7 @@ class Program
         Console.WriteLine(order1.GetPackingLabel());
         Console.WriteLine("Shipping Label:");
         Console.WriteLine(order1.GetShippingLabel());
-        Console.WriteLine("Total Price: $" + order1.GetTotalPrice());
+        Console.WriteLine("Total Price: $" + Math.Round(order2.GetTotalPrice(), 2));
         Console.WriteLine();
 
         Console.WriteLine("Order 2:");
@@ -37,6 +37,6 @@ class Program
         Console.WriteLine(order2.GetPackingLabel());
         Console.WriteLine("Shipping Label:");
         Console.WriteLine(order2.GetShippingLabel());
-        Console.WriteLine("Total Price: $" + order2.GetTotalPrice());
+        Console.WriteLine("Total Price: $" + Math.Round(order2.GetTotalPrice(), 2));
     }
 }
